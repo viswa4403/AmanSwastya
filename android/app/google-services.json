@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "651731879375",
+    "project_id": "amanswastya",
+    "storage_bucket": "amanswastya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651731879375:android:3f19434bb58d03403dbeba",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANUdqAsZaXSPevaVglMBAZZ2AAGUh15rA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
