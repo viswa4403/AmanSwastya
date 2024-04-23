@@ -1,3 +1,4 @@
+import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/util/helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -152,9 +153,17 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             centerTitle: true,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             expandedHeight: MediaQuery.of(context).size.height * 0.16,
+            // leading: IconButton(
+            //   onPressed: () {
+            //     Navigator.of(context).pop();
+            //   },
+            //   icon: const Icon(Icons.arrow_back_rounded),
+            // ),
             leading: IconButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                    (Route<dynamic> route) => false);
               },
               icon: const Icon(Icons.arrow_back_rounded),
             ),
@@ -184,7 +193,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 child: Text(
                   "Aman Chayatri",
                   style: GoogleFonts.poppins(
-                    color:Colors.white,
+                    color: Colors.white,
                     textStyle: Theme.of(context).textTheme.titleLarge,
                     fontWeight: FontWeight.w500,
                   ),

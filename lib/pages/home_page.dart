@@ -23,6 +23,9 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
+    if (index == 4) { // If the Chat icon is tapped
+    Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
+  }
   }
 
   @override
@@ -135,7 +138,7 @@ class ChatBotScreen extends StatelessWidget {
 //     WidgetsBinding.instance?.addPostFrameCallback((_) {
 //       Navigator.pushReplacementNamed(context, '/chatbot'); // Replace '/chatbot' with the actual route of the chatbot screen
 //     });
-//
+
 //     // Placeholder widget until navigation occurs
 //     return Scaffold(
 //       body: Center(
