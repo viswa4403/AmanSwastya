@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_app/pages/chatbot.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
     FitnessTracker(),
     Tutorials(),
     Profile(),
+    // Container(),
     ChatBotScreen(),
   ];
 
@@ -28,6 +30,8 @@ class _HomePageState extends State<HomePage> {
   }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black, // Set app bar background color to black
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async{
               void signUserOut() async {
                 await FirebaseAuth.instance.signOut();
               }
@@ -118,31 +122,71 @@ class Profile extends StatelessWidget {
   }
 }
 
-class ChatBotScreen extends StatelessWidget {
+// class ChatBotScreenn extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Home Page',
+//         style: TextStyle(fontSize: 20),
+//       ),
+//     );
+//   }
+// }
+
+class ChatBotScreenn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Page',
-        style: TextStyle(fontSize: 20),
+    return Scaffold(
+      backgroundColor: Color(0xFF112244), // Set a futuristic texture background color
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'ChatBot Screen exited',
+              style: TextStyle(fontSize: 24, color: Colors.white), // Increase font size and change text color
+            ),
+            SizedBox(height: 40), // Increase spacing
+            ElevatedButton(
+              onPressed: () {
+                Navigator.popUntil(context, ModalRoute.withName('/'));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue, // Set button color to blue
+                elevation: 5, // Add elevation
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12), // Add padding
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8), // Set button border radius
+                ),
+              ),
+              child: Text(
+                'Go to Home using Nav',
+                style: TextStyle(fontSize: 16, color: Colors.white), // Set button text style
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
 
+
 // class ChatBotScreen extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     // Navigate to the desired page when the ChatBotScreen is built
 //     WidgetsBinding.instance?.addPostFrameCallback((_) {
-//       Navigator.pushReplacementNamed(context, '/chatbot'); // Replace '/chatbot' with the actual route of the chatbot screen
+//       Navigator.of(context).pushReplacement(
+//         MaterialPageRoute(builder: (context) => Home()),
+//       );
 //     });
 
-//     // Placeholder widget until navigation occurs
-//     return Scaffold(
-//       body: Center(
-//         child: ChatBotScreen(), // Or any other loading indicator
+//     return Center(
+//       child: Text(
+//         'Home Page',
+//         style: TextStyle(fontSize: 20),
 //       ),
 //     );
 //   }

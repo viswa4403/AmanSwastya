@@ -156,17 +156,21 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             // leading: IconButton(
             //   onPressed: () {
             //     Navigator.of(context).pop();
+            //     // Navigator.pushNamed(context, '/home');
             //   },
             //   icon: const Icon(Icons.arrow_back_rounded),
             // ),
-            leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                    (Route<dynamic> route) => false);
-              },
-              icon: const Icon(Icons.arrow_back_rounded),
-            ),
+            // leading: IconButton(
+            //   onPressed: () {
+            //     Navigator.of(context).pushReplacement(
+            //         MaterialPageRoute(builder: (context) => HomePage()),
+            //         );
+            //   },
+            //     icon: const Icon(
+            //     Icons.arrow_back_rounded,
+            //     color: Colors.white,
+            //     ),
+            // ),
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.symmetric(
                 horizontal: 0.0,
