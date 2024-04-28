@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_app/pages/chatbot.dart';
+import 'package:first_app/pages/chatbot/chatbot.dart';
+import 'package:first_app/pages/tutorials/tutorials.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -192,14 +193,3 @@ class ChatBotScreenn extends StatelessWidget {
 //   }
 // }
 
-class Tutorials extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Tutorials Page',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
