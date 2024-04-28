@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/pages/chatbot/chatbot.dart';
+import 'package:first_app/pages/homepage/home.dart';
+import 'package:first_app/pages/profile/profile.dart';
 import 'package:first_app/pages/tutorials/tutorials.dart';
 import 'package:flutter/material.dart';
 
@@ -36,28 +38,28 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Aman Swastya', style: TextStyle(color: Color.fromARGB(255, 155, 85, 229))),
-        backgroundColor: Colors.black, // Set app bar background color to black
-        actions: [
-          IconButton(
-            onPressed: () async{
-              void signUserOut() async {
-                await FirebaseAuth.instance.signOut();
-              }
-              signUserOut();
-            },
-            icon: Icon(Icons.logout,
-                color: Color.fromARGB(255, 135, 52, 225)), // Set icon color to black
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text('Aman Swastya', style: TextStyle(color: Color.fromARGB(255, 155, 85, 229))),
+      //   backgroundColor: Colors.black, // Set app bar background color to black
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () async{
+      //         void signUserOut() async {
+      //           await FirebaseAuth.instance.signOut();
+      //         }
+      //         signUserOut();
+      //       },
+      //       icon: Icon(Icons.logout,
+      //           color: Color.fromARGB(255, 135, 52, 225)), // Set icon color to black
+      //     ),
+      //   ],
+      // ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // Fixed
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 5, 5, 5),
         onTap: _onItemTapped,
-        selectedItemColor: Color.fromARGB(255, 153, 64, 231),
+        selectedItemColor: Color.fromARGB(255, 231, 97, 64),
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         items: const <BottomNavigationBarItem>[
@@ -87,17 +89,17 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Page',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Home Page',
+//         style: TextStyle(fontSize: 20),
+//       ),
+//     );
+//   }
+// }
 
 class FitnessTracker extends StatelessWidget {
   @override
@@ -111,17 +113,17 @@ class FitnessTracker extends StatelessWidget {
   }
 }
 
-class Profile extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Profile Page',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
+// class Profile extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Profile Page',
+//         style: TextStyle(fontSize: 20),
+//       ),
+//     );
+//   }
+// }
 
 // class ChatBotScreenn extends StatelessWidget {
 //   @override

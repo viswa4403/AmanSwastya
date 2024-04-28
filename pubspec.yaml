@@ -43,6 +43,7 @@ dependencies:
   google_generative_ai: ^0.3.1
   typeset: ^2.1.1
   youtube_player_flutter: ^9.0.1
+  fl_chart: ^0.67.0
 
 
 dev_dependencies:
