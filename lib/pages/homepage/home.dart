@@ -1,5 +1,5 @@
-import 'package:first_app/pages/ActivityCard.dart';
-import 'package:first_app/pages/chart.dart';
+import 'package:first_app/pages/homepage/ActivityCard.dart';
+import 'package:first_app/pages/homepage/chart.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
