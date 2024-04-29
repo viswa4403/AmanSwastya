@@ -27,10 +27,10 @@ class _HomePageState extends State<HomePage> {
         setState(() {
       _selectedIndex = index;
     });
-    if (index == 4) {
-      // If the Chat icon is tapped
-      Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
-    }
+    // if (index == 4) {
+    //   // If the Chat icon is tapped
+    //   Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
+    // }
   //   if (index == 4) { // If the Chat icon is tapped
   //   Navigator.pushNamed(context, '/chatbot'); 
   // }
