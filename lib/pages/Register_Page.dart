@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -16,82 +15,86 @@ class _RegisterPageState extends State<RegisterPage> {
   final confirmPasswordController = TextEditingController();
 
   void signUserUp() async {
-  if (!mounted) return; // Check if the widget is still mounted
+    if (!mounted) return; // Check if the widget is still mounted
 
-  if (passwordController.text != confirmPasswordController.text) {
-    // Show password mismatch dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Error'),
-          content: Text('Passwords do not match'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close the dialog
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-    return; // Exit the method if passwords don't match
-  }
-
-  // Show loading indicator
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return Center(
-        child: CircularProgressIndicator(),
+    if (passwordController.text != confirmPasswordController.text) {
+      // Show password mismatch dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Passwords do not match'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
       );
-    },
-  );
+      return; // Exit the method if passwords don't match
+    }
 
-  try {
-    // Create user account
-    final userCredential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: usernameController.text,
-      password: passwordController.text,
-    );
-
-    if (!mounted) return; // Check if widget is still mounted before proceeding
-
-    // Close the loading indicator dialog
-    Navigator.pop(context);
-  } catch (e) {
-    if (!mounted) return; // Check if widget is still mounted before showing dialog
-
-    // Close the loading indicator dialog
-    Navigator.pop(context);
-
-    // Show error dialog
+    // Show loading indicator
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Error'),
-          content: Text('An error occurred while signing up. Please try again later.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close the dialog
-              },
-              child: Text('OK'),
-            ),
-          ],
+        return Center(
+          child: CircularProgressIndicator(),
         );
       },
     );
+
+    try {
+      // Create user account
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: usernameController.text,
+        password: passwordController.text,
+      );
+
+      if (!mounted)
+        return; // Check if widget is still mounted before proceeding
+
+      // Close the loading indicator dialog
+      Navigator.pop(context);
+    } catch (e) {
+      if (!mounted)
+        return; // Check if widget is still mounted before showing dialog
+
+      // Close the loading indicator dialog
+      Navigator.pop(context);
+
+      // Show error dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text(
+                'An error occurred while signing up. Please try again later.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         body: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(

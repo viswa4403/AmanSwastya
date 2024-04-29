@@ -1,4 +1,3 @@
-import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/util/helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
   late GenerativeModel model;
   late ChatSession chat;
-
   bool _isChatBotThinking = false;
 
   @override
@@ -35,7 +33,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       model: "gemini-pro",
       apiKey: "AIzaSyDb_PhoPBJDP-WgkdFrRWr6SnGjd3FiXOk",
     );
-
     chat = model.startChat(
       history: [
         Content.text(
@@ -143,7 +140,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(

@@ -1,7 +1,6 @@
 import 'package:first_app/pages/auth_page.dart';
 import 'package:first_app/pages/chatbot/chatbot.dart';
 import 'package:first_app/pages/home_page.dart';
-import 'package:first_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
