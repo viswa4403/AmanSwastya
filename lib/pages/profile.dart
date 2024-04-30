@@ -1,164 +1,3 @@
-// import 'package:first_app/pages/home_page.dart';
-// import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:first_app/pages/auth_page.dart';
-
-// class Profile extends StatefulWidget {
-//   @override
-//   _ProfileCreationPageState createState() => _ProfileCreationPageState();
-// }
-
-// class _ProfileCreationPageState extends State<Profile> {
-//   Future<DocumentSnapshot> _fetchProfile() async {
-//     final currentUser = FirebaseAuth.instance.currentUser;
-//     if (currentUser != null) {
-//       return FirebaseFirestore.instance
-//           .collection('users')
-//           .doc(currentUser.uid)
-//           .get();
-//     }
-//     throw Exception('No current user');
-//   }
-
-//   String? _selectedGender;
-//   late TextEditingController _nameController = TextEditingController();
-//   TextEditingController _ageController = TextEditingController();
-//   TextEditingController _weightController = TextEditingController();
-//   TextEditingController _heightController = TextEditingController();
-//   TextEditingController _dietController = TextEditingController();
-//   TextEditingController _goalController = TextEditingController();
-
-//   void _logout() async {
-//     await FirebaseAuth.instance.signOut();
-//     Navigator.of(context).pushAndRemoveUntil(
-//       MaterialPageRoute(builder: (context) => AuthPage()),
-//       (Route<dynamic> route) => false,
-//     );
-//   }
-
-//   Future<void> _saveProfile() async {
-//     try {
-//       final currentUser = FirebaseAuth.instance.currentUser;
-//       if (currentUser != null) {
-//         final userData = {
-//           'name': _nameController.text,
-//           'age': _ageController.text,
-//           'weight': _weightController.text,
-//           'height': _heightController.text,
-//           'gender': _selectedGender,
-//           'diet': _dietController.text,
-//           'goal': _goalController.text,
-//         };
-//         await FirebaseFirestore.instance
-//             .collection('users')
-//             .doc(currentUser.uid)
-//             .set(userData);
-
-//         // Navigate to the home page after saving the profile
-//         Navigator.of(context).pushReplacement(
-//           MaterialPageRoute(
-//             builder: (context) => HomePage(),
-//           ),
-//         );
-//       } else {
-//         // Handle user not authenticated
-//         print('User not authenticated');
-//       }
-//     } catch (error) {
-//       // Handle error saving profile
-//       print('Error saving profile: $error');
-//     }
-//   }
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _fetchProfile().then((doc) {
-//       if (doc.exists) {
-//         setState(() {
-//           _nameController.text = doc['name'] ?? '';
-//           _ageController.text = doc['age'] ?? '';
-//           _weightController.text = doc['weight'] ?? '';
-//           _heightController.text = doc['height'] ?? '';
-//           _dietController.text = doc['diet'] ?? '';
-//           _goalController.text = doc['goal'] ?? '';
-//           _selectedGender = doc['gender'] ?? '';
-//         });
-//       }
-//     });
-//   }
-
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Profile Creation'),
-//       ),
-//       body: Padding(
-//         padding: EdgeInsets.all(16.0),
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: <Widget>[
-//               ValueListenableBuilder<TextEditingValue>(
-//                 valueListenable: _nameController,
-//                 builder: (context, TextEditingValue value, _) {
-//                   return TextField(
-//                     controller: _nameController,
-//                     decoration: InputDecoration(labelText: 'Name'),
-//                   );
-//                 },
-//               ),
-//               TextField(
-//                 controller: _ageController,
-//                 decoration: InputDecoration(labelText: 'Age'),
-//               ),
-//               TextField(
-//                 controller: _weightController,
-//                 decoration: InputDecoration(labelText: 'Weight'),
-//               ),
-//               TextField(
-//                 controller: _heightController,
-//                 decoration: InputDecoration(labelText: 'Height'),
-//               ),
-//               DropdownButtonFormField<String>(
-//                 decoration: InputDecoration(labelText: 'Gender'),
-//                 value: _selectedGender, // Set the value to _selectedGender
-//                 items: <String>['Male', 'Female'].map((String value) {
-//                   return DropdownMenuItem<String>(
-//                     value: value,
-//                     child: Text(value),
-//                   );
-//                 }).toList(),
-//                 onChanged: (newValue) {
-//                   setState(() {
-//                     _selectedGender = newValue;
-//                   });
-//                 },
-//               ),
-//               TextField(
-//                 controller: _dietController,
-//                 decoration: InputDecoration(labelText: 'Dietary Restrictions'),
-//               ),
-//               TextField(
-//                 controller: _goalController,
-//                 decoration: InputDecoration(labelText: 'Primary Fitness Goal'),
-//               ),
-//               SizedBox(height: 16.0),
-//               ElevatedButton(
-//                 onPressed: _saveProfile,
-//                 child: Text('Save'),
-//               ),
-//               ElevatedButton(
-//                 onPressed: _logout,
-//                 child: Text('Logout'),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:first_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -215,6 +54,32 @@ class _ProfileCreationPageState extends State<Profile> {
     try {
       final currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser != null) {
+        if (_nameController.text.isEmpty ||
+            _ageController.text.isEmpty ||
+            _weightController.text.isEmpty ||
+            _heightController.text.isEmpty ||
+            _dietController.text.isEmpty ||
+            _goalController.text.isEmpty ||
+            _selectedGender == null ||
+            _selectedGender?.isEmpty == true) {
+          // Handle empty fields
+          showDialog(
+            context: context,
+            builder: (ctx) => AlertDialog(
+              title: Text('Error'),
+              content: Text('Please fill in all the fields'),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Okay'),
+                  onPressed: () {
+                    Navigator.of(ctx).pop();
+                  },
+                ),
+              ],
+            ),
+          );
+          return;
+        }
         final userData = {
           'name': _nameController.text,
           'age': _ageController.text,
@@ -248,8 +113,16 @@ class _ProfileCreationPageState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 215, 217, 218),
       appBar: AppBar(
-        title: Text('Profile Creation'),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 12.0),
+        // ),
+        title: const Text(
+          'Profile',
+          style: TextStyle(color: Color.fromARGB(255, 231, 97, 64)),
+        ),
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: _profileFuture,
@@ -279,22 +152,43 @@ class _ProfileCreationPageState extends State<Profile> {
               children: <Widget>[
                 TextField(
                   controller: _nameController,
-                  decoration: InputDecoration(labelText: 'Name'),
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                 ),
+                SizedBox(height: 16.0),
                 TextField(
                   controller: _ageController,
-                  decoration: InputDecoration(labelText: 'Age'),
+                  decoration: InputDecoration(
+                    labelText: 'Age',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                 ),
-                TextField(
-                  controller: _weightController,
-                  decoration: InputDecoration(labelText: 'Weight'),
-                ),
-                TextField(
-                  controller: _heightController,
-                  decoration: InputDecoration(labelText: 'Height'),
-                ),
+                SizedBox(height: 16.0),
                 DropdownButtonFormField<String>(
-                  decoration: InputDecoration(labelText: 'Gender'),
+                  decoration: InputDecoration(
+                    labelText: 'Gender',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                   value: _selectedGender,
                   items: <String>['Male', 'Female'].map((String value) {
                     return DropdownMenuItem<String>(
@@ -303,29 +197,88 @@ class _ProfileCreationPageState extends State<Profile> {
                     );
                   }).toList(),
                   onChanged: (newValue) {
-                    setState(() {
-                      _selectedGender = newValue;
-                    });
+                    _selectedGender = newValue;
                   },
                 ),
+                SizedBox(height: 16.0),
                 TextField(
-                  controller: _dietController,
-                  decoration:
-                      InputDecoration(labelText: 'Dietary Restrictions'),
-                ),
-                TextField(
-                  controller: _goalController,
-                  decoration:
-                      InputDecoration(labelText: 'Primary Fitness Goal'),
+                  controller: _heightController,
+                  decoration: InputDecoration(
+                    labelText: 'Height',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: _saveProfile,
-                  child: Text('Save'),
+                TextField(
+                  controller: _weightController,
+                  decoration: InputDecoration(
+                    labelText: 'Weight',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: _logout,
-                  child: Text('Logout'),
+                SizedBox(height: 16.0),
+                TextField(
+                  controller: _goalController,
+                  decoration: InputDecoration(
+                    labelText: 'Primary Fitness Goal',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                TextField(
+                  controller: _dietController,
+                  decoration: InputDecoration(
+                    labelText: 'Dietary Restrictions',
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment
+                      .spaceEvenly, // Adjust the spacing as needed
+                  children: <Widget>[
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: _saveProfile,
+                          child: Text('Save'),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: _logout,
+                          child: Text('Logout'),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
