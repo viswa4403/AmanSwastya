@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/pages/chatbot/chatbot.dart';
 import 'package:first_app/pages/homepage/home.dart';
 import 'package:first_app/pages/profile.dart';
@@ -21,23 +20,26 @@ class _HomePageState extends State<HomePage> {
     FitnessTracker(),
     Tutorials(),
     Profile(),
-    // Container(),
     ChatBotScreen(),
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
+        setState(() {
       _selectedIndex = index;
     });
-    if (index == 4) {
-      // If the Chat icon is tapped
-      Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
-    }
+    // if (index == 4) {
+    //   // If the Chat icon is tapped
+    //   Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
+    // }
+  //   if (index == 4) { // If the Chat icon is tapped
+  //   Navigator.pushNamed(context, '/chatbot'); 
+  // }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       // appBar: AppBar(
       //   title: Text('Aman Swastya', style: TextStyle(color: Color.fromARGB(255, 155, 85, 229))),
       //   backgroundColor: Colors.black, // Set app bar background color to black
@@ -181,6 +183,43 @@ class ChatBotScreenn extends StatelessWidget {
     );
   }
 }
+// class ChatBotScreenn extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Color(0xFF112244), // Set a futuristic texture background color
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               'ChatBot Screen exited',
+//               style: TextStyle(fontSize: 24, color: Colors.white), // Increase font size and change text color
+//             ),
+//             SizedBox(height: 40), // Increase spacing
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.popUntil(context, ModalRoute.withName('/'));
+//               },
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: Colors.blue, // Set button color to blue
+//                 elevation: 5, // Add elevation
+//                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12), // Add padding
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(8), // Set button border radius
+//                 ),
+//               ),
+//               child: Text(
+//                 'Go to Home using Nav',
+//                 style: TextStyle(fontSize: 16, color: Colors.white), // Set button text style
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 

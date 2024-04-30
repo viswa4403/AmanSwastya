@@ -10,11 +10,11 @@ class Home extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 200.0,
+            expandedHeight: 300.0,
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Your Fitness Planner'),
+              title: Text('Aman Swastya',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
               background: Image.network(
                 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
                 fit: BoxFit.cover,
