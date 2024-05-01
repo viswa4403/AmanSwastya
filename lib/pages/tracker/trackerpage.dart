@@ -1,16 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:intl/intl.dart';
-import 'package:pedometer/pedometer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_app/pages/tracker/today.dart';
 import 'package:first_app/pages/tracker/yday4.dart';
 import 'package:first_app/pages/tracker/yday3.dart';
 import 'package:first_app/pages/tracker/yday2.dart';
 import 'package:first_app/pages/tracker/yday1.dart';
-import 'package:first_app/pages/tracker/graph.dart';
+//import 'package:first_app/pages/tracker/graph.dart';
 
 
 class FitnessTracker extends StatefulWidget {
@@ -146,142 +141,161 @@ class _FitnessTrackerstate  extends State<FitnessTracker> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        
+        appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        // leading: Padding(
+        //   padding: const EdgeInsets.only(left: 12.0),
+        // ),
+        title: const Text(
+          'Tracker',
+          style: TextStyle(color: Color.fromARGB(255, 231, 97, 64)),
+        ),
+      ),
         body: SingleChildScrollView(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 380,
-                      height: 100,
-                      padding: EdgeInsets.only(left:5.0,right: 5.0),
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(220, 220, 220,.5),
-                        borderRadius: BorderRadius.circular(17)
-                      
+              
+              child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 40,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                        ElevatedButton(
-                          onPressed: don4, 
-                          style: ElevatedButton.styleFrom(
-                            
-                            foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.only(left: 2.0,right: 2.0),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                            elevation: 0
-                          ),
-                          child: Container(
-                            width: 52,
-                            height: 70,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(DateFormat('EEE').format(yday4),style: TextStyle(color: Colors.black),),
-                                  Text(DateFormat('d MMM').format(yday4),style: TextStyle(color: Colors.black))
-                              ]),
-                          )),
-                        // Container(
-                        //     width: 52,
-                        //     height:70,
-                        //     decoration: BoxDecoration(
-                        //     color: Color.fromARGB(255, 255, 255, 255),
-                        //     borderRadius: BorderRadius.circular(17),
-                        //     boxShadow: [BoxShadow(
-                        //         color: Colors.grey,
-                        //         blurRadius: 5.0,
-                        //       ),]
-                        //     ),
-                        //     child: 
-                        //  ),
-                         
-                         ElevatedButton(
-                          onPressed: don3, 
-                          style: ElevatedButton.styleFrom(
-                            
-                            foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.only(left: 2.0,right: 2.0),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                            elevation: 0
-                          ),
-                          child: Container(
-                            width: 52,
-                            height: 70,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(DateFormat('EEE').format(yday3),style: TextStyle(color: Colors.black),),
-                                  Text(DateFormat('d MMM').format(yday3),style: TextStyle(color: Colors.black))
-                              ]),
-                          )),
+                      Container(
+                        width: 380,
+                        height: 100,
+                        padding: EdgeInsets.only(left:5.0,right: 5.0),
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(220, 220, 220,.5),
+                          borderRadius: BorderRadius.circular(17)
                         
-                         ElevatedButton(
-                          onPressed: don2, 
-                          style: ElevatedButton.styleFrom(
-                            
-                            foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.only(left: 2.0,right: 2.0),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                            elevation: 0
-                          ),
-                          child: Container(
-                            width: 52,
-                            height: 70,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(DateFormat('EEE').format(yday2),style: TextStyle(color: Colors.black),),
-                                  Text(DateFormat('d MMM').format(yday2),style: TextStyle(color: Colors.black))
-                              ]),
-                          ))
-                          ,
-                         ElevatedButton(
-                          onPressed: don1, 
-                          style: ElevatedButton.styleFrom(
-                            
-                            foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.only(left: 2.0,right: 2.0),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                            elevation: 0
-                          ),
-                          child: Container(
-                            width: 52,
-                            height: 70,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(DateFormat('EEE').format(yday1),style: TextStyle(color: Colors.black),),
-                                  Text(DateFormat('d MMM').format(yday1),style: TextStyle(color: Colors.black))
-                              ]),
-                          ))
-                         ,
-                         ElevatedButton(
-                          onPressed: tod, 
-                          style: ElevatedButton.styleFrom(
-                            
-                            foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.only(left: 2.0,right: 2.0),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                            elevation: 0
-                          ),
-                          child: Container(
-                            width: 52,
-                            height: 70,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(DateFormat('EEE').format(today),style: TextStyle(color: Colors.black),),
-                                  Text(DateFormat('d MMM').format(today),style: TextStyle(color: Colors.black))
-                              ]),
-                          ))
-                         
-                      ],)
-                    ),
-                    _pages[_selectedIndex],
-                    
-                  ],
-                ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                          ElevatedButton(
+                            onPressed: don4, 
+                            style: ElevatedButton.styleFrom(
+                              
+                              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                              padding: EdgeInsets.only(left: 2.0,right: 2.0),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+                              elevation: 0
+                            ),
+                            child: Container(
+                              width: 52,
+                              height: 70,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(DateFormat('EEE').format(yday4),style: TextStyle(color: Colors.black),),
+                                    Text(DateFormat('d MMM').format(yday4),style: TextStyle(color: Colors.black))
+                                ]),
+                            )),
+                          // Container(
+                          //     width: 52,
+                          //     height:70,
+                          //     decoration: BoxDecoration(
+                          //     color: Color.fromARGB(255, 255, 255, 255),
+                          //     borderRadius: BorderRadius.circular(17),
+                          //     boxShadow: [BoxShadow(
+                          //         color: Colors.grey,
+                          //         blurRadius: 5.0,
+                          //       ),]
+                          //     ),
+                          //     child: 
+                          //  ),
+                           
+                           ElevatedButton(
+                            onPressed: don3, 
+                            style: ElevatedButton.styleFrom(
+                              
+                              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                              padding: EdgeInsets.only(left: 2.0,right: 2.0),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+                              elevation: 0
+                            ),
+                            child: Container(
+                              width: 52,
+                              height: 70,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(DateFormat('EEE').format(yday3),style: TextStyle(color: Colors.black),),
+                                    Text(DateFormat('d MMM').format(yday3),style: TextStyle(color: Colors.black))
+                                ]),
+                            )),
+                          
+                           ElevatedButton(
+                            onPressed: don2, 
+                            style: ElevatedButton.styleFrom(
+                              
+                              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                              padding: EdgeInsets.only(left: 2.0,right: 2.0),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+                              elevation: 0
+                            ),
+                            child: Container(
+                              width: 52,
+                              height: 70,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(DateFormat('EEE').format(yday2),style: TextStyle(color: Colors.black),),
+                                    Text(DateFormat('d MMM').format(yday2),style: TextStyle(color: Colors.black))
+                                ]),
+                            ))
+                            ,
+                           ElevatedButton(
+                            onPressed: don1, 
+                            style: ElevatedButton.styleFrom(
+                              
+                              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                              padding: EdgeInsets.only(left: 2.0,right: 2.0),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+                              elevation: 0
+                            ),
+                            child: Container(
+                              width: 52,
+                              height: 70,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(DateFormat('EEE').format(yday1),style: TextStyle(color: Colors.black),),
+                                    Text(DateFormat('d MMM').format(yday1),style: TextStyle(color: Colors.black))
+                                ]),
+                            ))
+                           ,
+                           ElevatedButton(
+                            onPressed: tod, 
+                            style: ElevatedButton.styleFrom(
+                              
+                              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+                              padding: EdgeInsets.only(left: 2.0,right: 2.0),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+                              elevation: 0
+                            ),
+                            child: Container(
+                              width: 52,
+                              height: 70,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(DateFormat('EEE').format(today),style: TextStyle(color: Colors.black),),
+                                    Text(DateFormat('d MMM').format(today),style: TextStyle(color: Colors.black))
+                                ]),
+                            ))
+                           
+                        ],)
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      _pages[_selectedIndex],
+                      
+                      
+                    ],
+                  ),
+              ),
             )
             
           ),

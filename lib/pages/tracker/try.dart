@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
@@ -158,6 +157,7 @@ class _FitnessTrackerstate  extends State<FitnessTracker> {
                   return Center(child: CircularProgressIndicator());
               }
               if (snapshot.hasError) {
+                
                 return Center(child: Text('Error: ${snapshot.error}'));
               }
           

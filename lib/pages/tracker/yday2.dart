@@ -45,7 +45,7 @@ class _yday2screenState extends State<yday2screen> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 400, // Example max width constraint
-      height: 400,
+      height: 200,
       child: Scaffold(
         body: Center(
           child: FutureBuilder<DocumentSnapshot>(
@@ -63,6 +63,7 @@ class _yday2screenState extends State<yday2screen> {
                 st = profileData['steps'] ?? '';
               }
               if(!st.containsKey(DateFormat('yMd').format(yday2))){
+                print("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
                   st[DateFormat('yMd').format(yday2)] = 0;
                   final currentUser = FirebaseAuth.instance.currentUser;
                   

@@ -45,7 +45,7 @@ class _yday1screenState extends State<yday1screen> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 400, // Example max width constraint
-      height: 400,
+      height: 200,
       child: Scaffold(
         body: Center(
           child: FutureBuilder<DocumentSnapshot>(

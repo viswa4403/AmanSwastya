@@ -3,7 +3,6 @@ import 'package:first_app/pages/homepage/home.dart';
 import 'package:first_app/pages/profile.dart';
 import 'package:first_app/pages/tutorials/tutorials.dart';
 import 'package:first_app/pages/tracker/trackerpage.dart';
-import 'package:first_app/pages/profile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
