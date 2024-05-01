@@ -48,7 +48,6 @@ dependencies:
   percent_indicator: ^4.2.3
   flutter_svg: ^2.0.10+1
   fl_chart: ^0.67.0
-
   crypto: any
   intl: any
 dev_dependencies:
