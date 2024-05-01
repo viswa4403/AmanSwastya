@@ -145,7 +145,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            floating: false,
+            floating: true,
             snap: false,
             pinned: false,
             centerTitle: true,
