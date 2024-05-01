@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Aman Swastya',
-                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 30, fontStyle: 
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)
                 )
                 ),
               background: Image.network(
