@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/pages/chatbot/chatbot.dart';
+import 'package:first_app/pages/homepage/home.dart';
+import 'package:first_app/pages/profile.dart';
 import 'package:first_app/pages/tutorials/tutorials.dart';
 import 'package:first_app/pages/tracker/trackerpage.dart';
 import 'package:first_app/pages/profile.dart';
@@ -20,46 +21,48 @@ class _HomePageState extends State<HomePage> {
     FitnessTracker(),
     Tutorials(),
     Profile(),
-    // Container(),
     ChatBotScreen(),
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
+        setState(() {
       _selectedIndex = index;
     });
-    if (index == 4) { // If the Chat icon is tapped
-    Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
+    // if (index == 4) {
+    //   // If the Chat icon is tapped
+    //   Navigator.pushNamed(context, '/chatbot'); // Navigate to the ChatBotScreen
+    // }
+  //   if (index == 4) { // If the Chat icon is tapped
+  //   Navigator.pushNamed(context, '/chatbot'); 
+  // }
   }
-  }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Aman Swastya', style: TextStyle(color: Color.fromARGB(255, 155, 85, 229))),
-        backgroundColor: Colors.black, // Set app bar background color to black
-        actions: [
-          IconButton(
-            onPressed: () async{
-              void signUserOut() async {
-                await FirebaseAuth.instance.signOut();
-              }
-              signUserOut();
-            },
-            icon: Icon(Icons.logout,
-                color: Color.fromARGB(255, 135, 52, 225)), // Set icon color to black
-          ),
-        ],
-      ),
+      resizeToAvoidBottomInset: false,
+      // appBar: AppBar(
+      //   title: Text('Aman Swastya', style: TextStyle(color: Color.fromARGB(255, 155, 85, 229))),
+      //   backgroundColor: Colors.black, // Set app bar background color to black
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () async{
+      //         void signUserOut() async {
+      //           await FirebaseAuth.instance.signOut();
+      //         }
+      //         signUserOut();
+      //       },
+      //       icon: Icon(Icons.logout,
+      //           color: Color.fromARGB(255, 135, 52, 225)), // Set icon color to black
+      //     ),
+      //   ],
+      // ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // Fixed
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 5, 5, 5),
         onTap: _onItemTapped,
-        selectedItemColor: Color.fromARGB(255, 153, 64, 231),
+        selectedItemColor: Color.fromARGB(255, 231, 97, 64),
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         items: const <BottomNavigationBarItem>[
@@ -89,17 +92,17 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Home extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Page',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Home Page',
+//         style: TextStyle(fontSize: 20),
+//       ),
+//     );
+//   }
+// }
 
 // class FitnessTracker extends StatelessWidget {
 //   @override
@@ -141,14 +144,18 @@ class ChatBotScreenn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF112244), // Set a futuristic texture background color
+      backgroundColor:
+          Color(0xFF112244), // Set a futuristic texture background color
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'ChatBot Screen exited',
-              style: TextStyle(fontSize: 24, color: Colors.white), // Increase font size and change text color
+              style: TextStyle(
+                  fontSize: 24,
+                  color:
+                      Colors.white), // Increase font size and change text color
             ),
             SizedBox(height: 40), // Increase spacing
             ElevatedButton(
@@ -158,14 +165,17 @@ class ChatBotScreenn extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue, // Set button color to blue
                 elevation: 5, // Add elevation
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12), // Add padding
+                padding: EdgeInsets.symmetric(
+                    horizontal: 24, vertical: 12), // Add padding
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8), // Set button border radius
+                  borderRadius:
+                      BorderRadius.circular(8), // Set button border radius
                 ),
               ),
               child: Text(
                 'Go to Home using Nav',
-                style: TextStyle(fontSize: 16, color: Colors.white), // Set button text style
+                style: TextStyle(
+                    fontSize: 16, color: Colors.white), // Set button text style
               ),
             ),
           ],
@@ -174,6 +184,43 @@ class ChatBotScreenn extends StatelessWidget {
     );
   }
 }
+// class ChatBotScreenn extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Color(0xFF112244), // Set a futuristic texture background color
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               'ChatBot Screen exited',
+//               style: TextStyle(fontSize: 24, color: Colors.white), // Increase font size and change text color
+//             ),
+//             SizedBox(height: 40), // Increase spacing
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.popUntil(context, ModalRoute.withName('/'));
+//               },
+//               style: ElevatedButton.styleFrom(
+//                 backgroundColor: Colors.blue, // Set button color to blue
+//                 elevation: 5, // Add elevation
+//                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12), // Add padding
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(8), // Set button border radius
+//                 ),
+//               ),
+//               child: Text(
+//                 'Go to Home using Nav',
+//                 style: TextStyle(fontSize: 16, color: Colors.white), // Set button text style
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 

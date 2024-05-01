@@ -150,7 +150,7 @@ class _TutorialsState extends State<Tutorials> {
             child: Text(
               _controller.metadata.title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 18.0,
               ),
               overflow: TextOverflow.ellipsis,
@@ -178,13 +178,15 @@ class _TutorialsState extends State<Tutorials> {
         },
       ),
       builder: (context, player) => Scaffold(
+        backgroundColor: Color.fromARGB(255, 218, 216, 215),
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
           // leading: Padding(
           //   padding: const EdgeInsets.only(left: 12.0),
           // ),
           title: const Text(
             'Aman Tutorials',
-            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+            style: TextStyle(color: Color.fromARGB(255, 231, 97, 64)),
           ),
           actions: [
             IconButton(
@@ -319,6 +321,7 @@ class _TutorialsState extends State<Tutorials> {
                       Expanded(
                         child: Slider(
                           inactiveColor: Colors.transparent,
+                          activeColor: Color.fromARGB(255, 245, 137, 83),
                           value: _volume,
                           min: 0.0,
                           max: 100.0,
@@ -367,14 +370,14 @@ class _TutorialsState extends State<Tutorials> {
       text: TextSpan(
         text: '$title : ',
         style: const TextStyle(
-          color: Colors.blueAccent,
+          color: Color.fromARGB(255, 0, 0, 0),
           fontWeight: FontWeight.bold,
         ),
         children: [
           TextSpan(
             text: value,
             style: const TextStyle(
-              color: Colors.blueAccent,
+              color: Color.fromARGB(255, 11, 67, 162),
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -392,7 +395,7 @@ class _TutorialsState extends State<Tutorials> {
       case PlayerState.ended:
         return Colors.red;
       case PlayerState.playing:
-        return const Color.fromARGB(255, 223, 234, 253);
+        return Color.fromARGB(255, 58, 61, 65);
       case PlayerState.paused:
         return Colors.orange;
       case PlayerState.buffering:

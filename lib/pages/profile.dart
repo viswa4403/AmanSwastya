@@ -136,6 +136,7 @@ class _ProfileCreationPageState extends State<Profile> {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
           
+
           final profileData = snapshot.data?.data() as Map<String, dynamic>?;
 
           if (profileData != null) {
