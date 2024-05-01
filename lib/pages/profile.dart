@@ -264,18 +264,26 @@ class _ProfileCreationPageState extends State<Profile> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          onPressed: _saveProfile,
-                          child: Text('Save'),
-                        ),
+                            onPressed: _saveProfile,
+                            child: Text('Save'),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor:
+                                  Color.fromARGB(255, 143, 148, 152),
+                            )),
                       ),
                     ),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          onPressed: _logout,
-                          child: Text('Logout'),
-                        ),
+                            onPressed: _logout,
+                            child: Text('Logout'),
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor:
+                                  Color.fromARGB(255, 143, 148, 152),
+                            )),
                       ),
                     ),
                   ],
