@@ -145,9 +145,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            floating: true,
-            snap: true,
-            pinned: true,
+            floating: false,
+            snap: false,
+            pinned: false,
             centerTitle: true,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             expandedHeight: MediaQuery.of(context).size.height * 0.16,
