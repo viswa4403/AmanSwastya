@@ -146,8 +146,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         slivers: [
           SliverAppBar(
             floating: true,
-            snap: true,
-            pinned: true,
+            snap: false,
+            pinned: false,
             centerTitle: true,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             expandedHeight: MediaQuery.of(context).size.height * 0.16,
