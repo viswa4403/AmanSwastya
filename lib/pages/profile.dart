@@ -271,6 +271,9 @@ class _ProfileCreationPageState extends State<Profile> {
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                           onPressed: _saveProfile,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Color.fromARGB(255, 244, 110, 57),
+                            ),
                           child: Text('Save'),
                         ),
                       ),
@@ -280,6 +283,9 @@ class _ProfileCreationPageState extends State<Profile> {
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                           onPressed: _logout,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Color.fromARGB(255, 244, 110, 57),
+                            ),
                           child: Text('Logout'),
                         ),
                       ),
