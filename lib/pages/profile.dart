@@ -18,7 +18,7 @@ class _ProfileCreationPageState extends State<Profile> {
   late TextEditingController _heightController;
   late TextEditingController _dietController;
   late TextEditingController _goalController;
-
+  late Map <String,dynamic>st = {'bh':0};
   @override
   void initState() {
     super.initState();
@@ -29,6 +29,7 @@ class _ProfileCreationPageState extends State<Profile> {
     _heightController = TextEditingController();
     _dietController = TextEditingController();
     _goalController = TextEditingController();
+    
   }
 
   Future<DocumentSnapshot> _fetchProfile() async {
@@ -88,6 +89,7 @@ class _ProfileCreationPageState extends State<Profile> {
           'gender': _selectedGender,
           'diet': _dietController.text,
           'goal': _goalController.text,
+          'steps': st,
         };
         await FirebaseFirestore.instance
             .collection('users')
@@ -133,6 +135,7 @@ class _ProfileCreationPageState extends State<Profile> {
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
+          
 
           final profileData = snapshot.data?.data() as Map<String, dynamic>?;
 
@@ -144,6 +147,7 @@ class _ProfileCreationPageState extends State<Profile> {
             _dietController.text = profileData['diet'] ?? '';
             _goalController.text = profileData['goal'] ?? '';
             _selectedGender = profileData['gender'] ?? '';
+            st = profileData['steps'] ?? '';
           }
 
           return SingleChildScrollView(
@@ -197,7 +201,9 @@ class _ProfileCreationPageState extends State<Profile> {
                     );
                   }).toList(),
                   onChanged: (newValue) {
-                    _selectedGender = newValue;
+                    setState(() {
+                      _selectedGender = newValue;
+                    });
                   },
                 ),
                 SizedBox(height: 16.0),

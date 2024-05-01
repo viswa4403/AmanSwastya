@@ -2,6 +2,7 @@ import 'package:first_app/pages/chatbot/chatbot.dart';
 import 'package:first_app/pages/homepage/home.dart';
 import 'package:first_app/pages/profile.dart';
 import 'package:first_app/pages/tutorials/tutorials.dart';
+import 'package:first_app/pages/tracker/trackerpage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -102,17 +103,17 @@ class _HomePageState extends State<HomePage> {
 //   }
 // }
 
-class FitnessTracker extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Fitness Tracker Page',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-}
+// class FitnessTracker extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'Fitness Tracker Page',
+//         style: TextStyle(fontSize: 20),
+//       ),
+//     );
+//   }
+// }
 
 // class Profile extends StatelessWidget {
 //   @override
