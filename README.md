@@ -1,18 +1,36 @@
-# first_app
+# Aman Swastya
 
-A new Flutter project.
+## Description
+AmanSwasthya is a personalized health and fitness mobile application, designed using cutting-edge technologies and following Agile methodology to ensure rapid and efficient development. Our app aims to revolutionize personal health management by providing tailored health insights and fitness plans.
 
-## Getting Started
+## Technologies Used
+- **Flutter**
+- **Git**
+- **GitHub**
+- **Jira**
+- **Firebase**
+- **Gemini API**
+- **SonarQube**
+- **Jenkins**
+- **Docker**
 
-This project is a starting point for a Flutter application.
+## Key Features
+- **Agile Methodology**: Engineered a personalized health and fitness mobile application in just 3 high-velocity sprints, slashing development time by 60%.
+- **4-Phase QA Strategy**:
+  - 50+ Unit Tests
+  - 30+ Integration Tests
+  - 5+ System Evaluations
+  - Beta Testing with 20 users
+- **Documentation & Version Control**: Crafted a comprehensive SRS document and maintained seamless version control throughout development.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
+To get started with AmanSwasthya, follow these steps:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Clone the repository
+git clone https://github.com/viswa4403/AmanSwasthya.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Navigate to the project directory
+cd AmanSwasthya
 
-git tutorial: https://youtu.be/mTemJGanZTM
+# Install dependencies
+npm install
